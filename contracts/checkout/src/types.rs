@@ -1,4 +1,4 @@
-use soroban_sdk::{contracterror, contracttype, Address, BytesN, Env};
+use soroban_sdk::{contracterror, contracttype, Address, BytesN, Bytes, Env};
 
 #[contracterror]
 #[derive(Copy, Clone, Debug, Eq, PartialEq, PartialOrd, Ord)]
@@ -15,6 +15,8 @@ pub enum Error {
     InvoiceNotOpen = 9,
     AmountMismatch = 10,
     Unauthorized = 11,
+    InvoiceNotPaid = 12,
+    PaymentNotFound = 13,
 }
 
 /// Invoice represents a payment request from a merchant
@@ -79,26 +81,34 @@ pub enum DataKey {
 }
 
 /// Generates a unique invoice ID based on merchant address and current ledger info
-/// 
+///
 /// # Arguments
 /// * `env` - The Soroban environment
 /// * `merchant` - The merchant address
-/// 
+///
 /// # Returns
 /// A unique 32-byte invoice ID
 pub fn generate_invoice_id(env: &Env, merchant: &Address) -> BytesN<32> {
     let timestamp = env.ledger().timestamp();
     let sequence = env.ledger().sequence();
     
-    // Convert relevant data to bytes
-    let merchant_bytes = merchant.to_xdr(env);
+    // Get or increment a global counter for uniqueness
+    let counter_key = DataKey::InvoiceCounter;
+    let counter: u64 = env.storage()
+        .persistent()
+        .get(&counter_key)
+        .unwrap_or(0);
     
-    // Create a buffer to hash
-    let mut buffer = Vec::new(env);
-    buffer.push_back(merchant_bytes);
-    buffer.push_back(env.ledger().timestamp().to_be_bytes().as_slice());
-    buffer.push_back(env.ledger().sequence().to_be_bytes().as_slice());
+    env.storage()
+        .persistent()
+        .set(&counter_key, &(counter + 1));
     
-    // Hash the data to create a unique ID
+    // Create a buffer with timestamp, sequence, and counter
+    let mut buffer = Bytes::new(env);
+    buffer.extend_from_array(&timestamp.to_be_bytes());
+    buffer.extend_from_array(&sequence.to_be_bytes());
+    buffer.extend_from_array(&counter.to_be_bytes());
+    
+    // Hash the combined data to create a unique ID
     env.crypto().sha256(&buffer)
 }

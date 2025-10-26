@@ -70,3 +70,4 @@ coverage/
 # React / Vite specific
 /public/mockServiceWorker.js
 /stats.html
+.vercel

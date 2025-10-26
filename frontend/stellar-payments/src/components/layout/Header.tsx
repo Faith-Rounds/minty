@@ -8,7 +8,7 @@ export function Header() {
         <div className="flex items-center justify-between">
           <Link to="/" className="flex items-center gap-2">
             <div className="w-8 h-8 bg-gradient-to-br from-primary-500 to-primary-700 rounded-lg" />
-            <span className="text-xl font-bold">Stellar Pay</span>
+            <span className="text-xl font-bold">Minty</span>
           </Link>
           
           <nav className="hidden md:flex items-center gap-6">

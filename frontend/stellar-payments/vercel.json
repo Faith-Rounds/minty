@@ -1,0 +1,27 @@
+{
+  "framework": "vite",
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
+  "installCommand": "npm install",
+  "routes": [
+    {
+      "src": "/assets/(.*)",
+      "dest": "/assets/$1"
+    },
+    {
+      "src": "/(.+\\.[a-zA-Z0-9]+)$",
+      "dest": "/$1"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/index.html"
+    }
+  ],
+  "env": {
+    "VITE_SOROBAN_RPC_URL": "https://soroban-testnet.stellar.org:443",
+    "VITE_HORIZON_URL": "https://horizon-testnet.stellar.org",
+    "VITE_NETWORK_PASSPHRASE": "Test SDF Network ; September 2015",
+    "VITE_CHECKOUT_CONTRACT_ID": "CA4K7TEDFHTAGPIH7ZPNGECH6QKQWNTLEKNPHPJYORXIOM6IM2V2BM6Y",
+    "VITE_USDC_CONTRACT_ID": "CDZCU5CXWN7LHE22FUMNMMFZTYIQCHMOBU72VE572BNQIKN6BRTKDNGQ"
+  }
+}

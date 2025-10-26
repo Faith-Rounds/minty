@@ -5,7 +5,7 @@ export function Footer() {
         <div className="flex flex-col items-center gap-4">
           <div className="flex items-center gap-2">
             <div className="w-6 h-6 bg-gradient-to-br from-primary-500 to-primary-700 rounded-lg" />
-            <span className="font-semibold">Stellar Pay</span>
+            <span className="font-semibold">Minty</span>
           </div>
           
           <div className="flex gap-6 text-sm text-gray-600">

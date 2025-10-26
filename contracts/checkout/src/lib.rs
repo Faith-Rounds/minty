@@ -2,7 +2,7 @@
 
 mod types;
 
-use soroban_sdk::{contract, contractimpl, symbol_short, token, Address, Env, BytesN, Vec};
+use soroban_sdk::{contract, contractimpl, symbol_short, token, Address, Env, BytesN};
 use types::{Invoice, Payment, InvoiceStatus, DataKey, generate_invoice_id, Error};
 
 #[contract]
@@ -196,7 +196,7 @@ impl CheckoutContract {
         
         // 4. Check status (must be Paid)
         if invoice.status != InvoiceStatus::Paid {
-            return Err(Error::InvoiceNotOpen);
+            return Err(Error::InvoiceNotPaid);
         }
         
         // 5. Get payment to find payer
@@ -204,7 +204,7 @@ impl CheckoutContract {
             .storage()
             .persistent()
             .get(&DataKey::Payment(invoice_id.clone()))
-            .ok_or(Error::InvoiceNotFound)?;
+            .ok_or(Error::PaymentNotFound)?;
         
         // 6. Validate refund amount (must be full refund)
         if amount != payment.amount {
