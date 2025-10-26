@@ -20,7 +20,7 @@ Stellar's unique features, like fast transaction finality (3-5 seconds) and mini
 
 ## Demo Video
 
-[Link to demo video - add your Loom or YouTube link here]
+[Link to demo video](https://drive.google.com/drive/folders/1byi8zZ2oFsokd2n9Q64dDf2WTO7YkbQ-?usp=share_link)
 
 ## Presentation
 
@@ -28,8 +28,12 @@ Stellar's unique features, like fast transaction finality (3-5 seconds) and mini
 
 ## Screenshots
 
-![Dashboard Screenshot - Add your screenshot here]()
-![Payment Flow Screenshot - Add your screenshot here]()
+<img width="1285" height="919" alt="Screenshot 2025-10-26 at 11 54 31 AM" src="https://github.com/user-attachments/assets/c8da2792-49c3-4c1a-a4e8-ce87ed5e18d2" />
+<img width="1287" height="924" alt="Screenshot 2025-10-26 at 11 54 39 AM" src="https://github.com/user-attachments/assets/03559052-4cda-4285-b35f-85a9473026b0" />
+<img width="1266" height="755" alt="Screenshot 2025-10-26 at 11 54 47 AM" src="https://github.com/user-attachments/assets/a5a5bc9c-ace4-4ca6-a524-f5eb638bd078" />
+<img width="1290" height="777" alt="Screenshot 2025-10-26 at 11 54 53 AM" src="https://github.com/user-attachments/assets/3767f45c-2879-415d-b5a6-517d64e33e7a" />
+<img width="1278" height="713" alt="Screenshot 2025-10-26 at 11 55 03 AM" src="https://github.com/user-attachments/assets/6596690d-2bc7-4483-b2d2-532f23046617" />
+
 
 ## Smart Contract Overview
 
